@@ -10,7 +10,7 @@
 //===----------------------------------------------------------------------===//
 
 import Foundation
-import _Concurrency
+//import _Concurrency
 
 extension Sequence {
   func uniqued<T: Hashable>(by transform: (Element) throws -> T) rethrows -> [Element] {

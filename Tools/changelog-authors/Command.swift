@@ -11,7 +11,7 @@
 
 import ArgumentParser
 import Foundation
-import _Concurrency
+//import _Concurrency
 
 @available(macOS 12, *)
 @main

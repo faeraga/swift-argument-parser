@@ -1,4 +1,4 @@
-// swift-tools-version:5.4
+// swift-tools-version:5.5
 //===----------------------------------------------------------*- swift -*-===//
 //
 // This source file is part of the Swift Argument Parser open source project
@@ -14,6 +14,9 @@ import PackageDescription
 
 var package = Package(
     name: "swift-argument-parser",
+	platforms: [
+        .macOS(.v12),
+    ],
     products: [
         .library(
             name: "ArgumentParser",
@@ -25,9 +28,9 @@ var package = Package(
             name: "ArgumentParser",
             dependencies: [],
             swiftSettings: [
-                .unsafeFlags(["-Xfrontend", "-enable-experimental-concurrency"]),
+                //.unsafeFlags(["-Xfrontend", "-enable-experimental-concurrency"]),
             ]),
-        .target(
+        /*.target(
             name: "ArgumentParserTestHelpers",
             dependencies: ["ArgumentParser"]),
 
@@ -49,7 +52,7 @@ var package = Package(
             dependencies: ["ArgumentParser"],
             path: "Tools/changelog-authors",
             swiftSettings: [
-                .unsafeFlags(["-Xfrontend", "-enable-experimental-concurrency"]),
+                //.unsafeFlags(["-Xfrontend", "-enable-experimental-concurrency"]),
             ]),
 
         .testTarget(
@@ -61,13 +64,8 @@ var package = Package(
         .testTarget(
             name: "ArgumentParserExampleTests",
             dependencies: ["ArgumentParserTestHelpers"]),
+        .testTarget(
+            name: "ArgumentParserPackageManagerTests",
+            dependencies: ["ArgumentParser", "ArgumentParserTestHelpers"]),*/
     ]
 )
-
-#if swift(>=5.2)
-// Skip if < 5.2 to avoid issue with nested type synthesized 'CodingKeys'
-package.targets.append(
-    .testTarget(
-        name: "ArgumentParserPackageManagerTests",
-        dependencies: ["ArgumentParser", "ArgumentParserTestHelpers"]))
-#endif
