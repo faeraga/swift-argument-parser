@@ -27,6 +27,7 @@ var package = Package(
         .target(
             name: "ArgumentParser",
             dependencies: [],
+            exclude: ["CMakeLists.txt"],
             swiftSettings: [
                 //.unsafeFlags(["-Xfrontend", "-enable-experimental-concurrency"]),
             ]),
